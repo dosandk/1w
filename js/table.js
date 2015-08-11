@@ -3,7 +3,7 @@ function Table(tableData, idOfElement, columnTitles, tableClass) {
 		element = document.getElementById(idOfElement) || null;
 
 	function initialize() {
-		tableSettings.titles = columnTitles || ['product', 'price, грн', 'discount, %', 'discount, грн'];
+		tableSettings.titles = columnTitles || ['product', 'price, грн', 'category', 'discount, %', 'discount, грн'];
 		tableSettings._id = idOfElement,
 		tableSettings._className = tableClass || 'table table-striped table-bordered text-center';
 		
