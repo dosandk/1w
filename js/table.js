@@ -21,7 +21,7 @@
     };
 
     Table.prototype.formThead = function(){
-        var colTitles = ['Product', 'Price, грн.', 'Discount, %', 'Discount, грн.'],
+        var colTitles = ['Product', 'Price, грн.', 'Category', 'Discount, %', 'Discount, грн.'],
             thead = document.createElement('thead'),
             tr = document.createElement('tr'),
             th,
