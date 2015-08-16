@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MVC</title>
+    <script src="js/app.js"></script>
+    <script src="js/utils/ajax.js"></script>
+    <script src="js/models/product-model.js"></script>
+    <script src="js/collections/products-collection.js"></script>
+    <script src="js/views/products-view.js"></script>
+</head>
+<body>
+
+    <table>
+        <thead id="products-columns-names-view-port">
+        <tr>
+            <td>product</td>
+            <td>price, грн</td>
+            <td>discount, %</td>
+            <td>discount, грн</td>
+        </tr>
+        </thead>
+        <tbody id="products-view-port">&nbsp;</tbody>
+    </table>
+
+    <script>
+
+        var products = [
+            { name: 'молоко',            price: 12,  discount: 10 },
+            { name: 'йогурт',            price: 30,  discount: 10 },
+            { name: 'сок вишневый',      price: 20,  discount: 10 },
+            { name: 'сок апельсиновый',  price: 28,  discount: 10 },
+            { name: 'рогалик с маком',   price: 5,   discount: 10 },
+            { name: 'трубочка с кремом', price: 8,   discount: 10 },
+            { name: 'шампанское',        price: 30,  discount: 10 },
+            { name: 'вино',              price: 100, discount: 10 }
+        ];
+
+        App.Views.Product({
+            initialize: function() {
+                var self = this;
+
+                self.productsCollection = App.Collections.Product({
+                    model: App.Models.Product()
+                });
+
+                self.productsCollection.add(products);
+
+                self.getTemplate(function() {
+                    self.render();
+                });
+            },
+            render: function() {
+                var self = this,
+                    index = 0,
+                    models = self.productsCollection.models,
+                    productsLength = models.length,
+                    productsHtml = '';
+
+                for (index; index < productsLength; index++) {
+                    var product = models[index];
+
+                    productsHtml += self.parsedTpl(product);
+                }
+
+                document.getElementById('products-view-port').innerHTML = productsHtml;
+            }
+        });
+
+    </script>
+
+</body>
+</html>
