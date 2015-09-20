@@ -35,4 +35,6 @@ product |	price, грн	| category | discount, % | discount, грн
 **cheap:** discount = 30%  
 **expensive:** discount = 10%
 
+### Step-3
+Реализовать возмоность переключения представления товаров из табличного вида в вид списка. См. скрин №1
 
