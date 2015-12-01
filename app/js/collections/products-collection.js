@@ -1,8 +1,6 @@
-var collectionProduct = App.defineScope('Collections');
-
-collectionProduct.Product = function(data) {
-    if (!(this instanceof collectionProduct.Product)) {
-        return new collectionProduct.Product(data);
+App.defineScope('Collections.Product', function(data) {
+    if (!(this instanceof App.Collections.Product)) {
+        return new App.Collections.Product(data);
     }
 
     var collection = this;
@@ -23,4 +21,4 @@ collectionProduct.Product = function(data) {
 
         return collection;
     };
-};
+});

@@ -1,8 +1,6 @@
-var modelProduct = App.defineScope('Models');
-
-modelProduct.Product = function() {
-    if (!(this instanceof modelProduct.Product)) {
-        return new modelProduct.Product();
+App.defineScope('Models.Product', function() {
+    if (!(this instanceof App.Models.Product)) {
+        return new App.Models.Product();
     }
 
     var model = this;
@@ -19,4 +17,4 @@ modelProduct.Product = function() {
 
         return productData
     };
-};
+});

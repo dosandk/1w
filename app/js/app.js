@@ -1,6 +1,6 @@
 var App = App || {};
 
-App.defineScope = function(namespace) {
+App.defineScope = function(namespace, moduleBody) {
     var parts = namespace.split('.'),
         partsLength = parts.length,
         index = 0,
@@ -15,8 +15,10 @@ App.defineScope = function(namespace) {
             parent[parts[index]] = {};
         }
 
+        if ((index + 1) === partsLength) {
+            parent[parts[index]] = moduleBody;
+        }
+
         parent = parent[parts[index]];
     }
-
-    return parent;
 };

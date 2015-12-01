@@ -1,9 +1,7 @@
-var utils = App.defineScope('utils');
-
-utils.ajax = function(callbackSuccess) {
+App.defineScope('utils.ajax', function(dataObj) {
     var xhr = new XMLHttpRequest();
 
-    xhr.open('GET', './templates/products-list.tpl', true);
+    xhr.open('GET', dataObj.url, true);
 
     xhr.send();
 
@@ -14,10 +12,9 @@ utils.ajax = function(callbackSuccess) {
             alert(xhr.status + ': ' + xhr.statusText);
         }
         else {
-            if (typeof callbackSuccess === 'function') {
-                callbackSuccess(xhr.responseText);
+            if (typeof dataObj.callbackSuccess === 'function') {
+                dataObj.callbackSuccess(xhr.responseText);
             }
         }
-
     };
-};
+});

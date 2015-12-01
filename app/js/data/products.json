@@ -1,0 +1,11 @@
+[
+  { "name": "молоко",            "price": 12,  "discount": "cheap"     },
+  { "name": "йогурт",            "price": 30,  "discount": "expensive" },
+  { "name": "сок вишневый",      "price": 20,  "discount": "expensive" },
+  { "name": "сок апельсиновый",  "price": 28,  "discount": "cheap"     },
+  { "name": "рогалик с маком",   "price": 5,   "discount": "cheap"     },
+  { "name": "трубочка с кремом", "price": 8,   "discount": "expensive" },
+  { "name": "шампанское",        "price": 30,  "discount": "cheap"     },
+  { "name": "вино",              "price": 100, "discount": "expensive" }
+]
+

@@ -1,13 +1,13 @@
-var viewProduct = App.defineScope('Views');
-
-viewProduct.Product = function(config) {
-    if (!(this instanceof viewProduct.Product)) {
-        return new viewProduct.Product(config);
+App.defineScope('Views.Product', function(config) {
+    if (!(this instanceof App.Views.Product)) {
+        return new App.Views.Product(config);
     }
 
     var view = this;
 
     view.template = '';
+    view.templates = config.templates;
+    view.templateName = './templates/products-list.tpl';
 
     var initialize = function() {
         view.render();
@@ -21,6 +21,14 @@ viewProduct.Product = function(config) {
 
     view.render = config.render || render;
 
+    view.beforeRender = function() {
+        var self = this;
+
+        self.getTemplate(function () {
+            self.render();
+        });
+    };
+
     view.parsedTpl = function(product) {
         return view.template
             .replace('<%= product.name %>', product.name)
@@ -30,16 +38,16 @@ viewProduct.Product = function(config) {
     };
 
     view.getTemplate = function(callbackSuccess) {
+        var self = this;
 
-        App.utils.ajax(function(response) {
-            view.template = response;
-
-            if (typeof callbackSuccess === 'function') {
+        App.utils.ajax({
+            url: self.templateName,
+            callbackSuccess: function(response) {
+                view.template = response;
                 callbackSuccess();
             }
         });
     };
 
     view.initialize();
-};
-
+});
